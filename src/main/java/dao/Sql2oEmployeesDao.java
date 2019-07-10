@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sql2oEmployeesDao implements EmployeesDao {
+
     private final Sql2o sql2o;
 
     public Sql2oEmployeesDao(Sql2o sql2o){
@@ -47,11 +48,12 @@ public class Sql2oEmployeesDao implements EmployeesDao {
 
     @Override
     public void addEmployeeToDepartment(Employees employees, Department department) {
-        String sql = "INSERT INTO departments_users(department_id, user_id) VALUES (:department_id, :user_id)";
+        String sql = "INSERT INTO departments_employees(departmentId, employeeId) VALUES (:departmentId, :employeeId)";
         try(Connection conn = sql2o.open()){
             conn.createQuery(sql)
-                    .addParameter("department_id", department.getId())
-                    .addParameter("user_id", employees.getId())
+                    .addParameter("departmentId", department.getId())
+                    .addParameter("employeeId", employees.getId())
+                    .throwOnMappingFailure(false)
                     .executeUpdate();
         }catch (Sql2oException ex){
             System.out.println(ex);
@@ -59,15 +61,15 @@ public class Sql2oEmployeesDao implements EmployeesDao {
     }
 
     @Override
-    public List<Department> getAllDepartmentsForEmployee(int employee_id) {
+    public List<Department> getAllDepartmentsForEmployee(int employeeId) {
         ArrayList<Department> allDepartments = new ArrayList<>();
-        String matchToGetDepartmentId = "SELECT department_id FROM departments_users WHERE user_id =:user_id";
+        String matchToGetDepartmentId = "SELECT departmentId FROM departments_employees WHERE employeeId =:employeeId";
         try(Connection conn = sql2o.open()){
-            List<Integer> allDepartmentIds = conn.createQuery(matchToGetDepartmentId).addParameter("employee_id", employee_id)
+            List<Integer> allDepartmentIds = conn.createQuery(matchToGetDepartmentId).addParameter("employeeId", employeeId)
                     .executeAndFetch(Integer.class);
-            for(Integer department_id : allDepartmentIds){
-                String getFromDepartments = "SELECT * FROM departments WHERE id =:department_id";
-                allDepartments.add(conn.createQuery(getFromDepartments).addParameter("department_id", department_id).executeAndFetchFirst(Department.class));
+            for(Integer departmentId : allDepartmentIds){
+                String getFromDepartments = "SELECT * FROM departments WHERE id=:departmentId";
+                allDepartments.add(conn.createQuery(getFromDepartments).addParameter("departmentId", departmentId).executeAndFetchFirst(Department.class));
             }
         }catch (Sql2oException ex){
             System.out.println(ex);
@@ -75,5 +77,14 @@ public class Sql2oEmployeesDao implements EmployeesDao {
         return allDepartments;
     }
 
+    @Override
+    public void clearAll() {
+        String sql = "DELETE from employees";
+        try(Connection conn = sql2o.open()){
+            conn.createQuery(sql).executeUpdate();
+        }catch (Sql2oException ex){
+            System.out.println(ex);
+        }
     }
+}
 
