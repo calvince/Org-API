@@ -19,4 +19,5 @@ public interface EmployeesDao {
 
     //Get all departments Employee belongs to
     List<Department> getAllDepartmentsForEmployee(int employee_id);
+    void clearAll();
 }
