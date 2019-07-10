@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css?family=Carter+One");
+@import url("https://fonts.googleapis.com/css?family=Carter+One|Fredericka+the+Great");
+@import url("https://fonts.googleapis.com/css?family=Atma|Carter+One|Fredericka+the+Great");
+@import url("https://fonts.googleapis.com/css?family=Lato|Rye&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color:#fff;
+    font-family: 'Fredericka the Great', cursive;
+    font-size:20px;
+}
+.form input[type=text]{
+    color:white;
+    background:none;
+}
+body{
+    text-align: center;
+    background-image:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),url(/images/mazuri.jpg);
+    position: relative;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.h-1,#btn-1,#ed-1{
+    color: #fff;
+    font-family: 'Fredericka the Great', cursive;
+}
+.btn-1{
+    margin-top: 15%;
+    color: #fff;
+    font-family: 'Fredericka the Great', cursive;
+}
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  nav{
+    /* This section calls the slideInFromLeft animation we defined above */
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+
+    /* background: #333; */
+    padding: 30px;
+  }
+
+  Added for aesthetics
+   body {margin: 0;font-family: "Segoe UI", Arial, Helvetica, Sans Serif;
+}
+    a {text-decoration: none; display: inline-block; margin-right: 10px; color:#fff;
+    }
+    button{
+        position: relative;
+      color: white;
+      background-color: black;
+      border: none;
+      padding: 10px 30px;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+      outline-color: transparent;
+    }
+    button::after{
+        content: '';
+        position: absolute;
+        transform: rotate(45deg);
+        top: 5px;
+        height: 20px;
+        width: 20px;
+        left: 0;
+        transition: all 0.2s ease;
+
+    }
+    button:hover{
+        box-shadow: 0 0 20px rgb(255, 255, 255);
+        border-radius: 30px;
+        transition-delay: 0.1s;
+
+    }
+    button:active{
+        box-shadow: 0 0 60px rgb(255, 255, 255);
+      transition: 0.1s ease;
+    }
+    button:hover::after{
+        left: 100%;
+      border-top: 3px solid rgb(0, 0, 0);
+      border-right: 3px solid rgb(255, 255, 255);
+      box-shadow: 15px -15px 20px rgb(255, 255, 255);
+    }
+    #h1-1{
+    color:#fff;
+    font-family: 'Rye', cursive;
+    }
+    #babayao ,#hero-bak{
+        background-color:rgb(0,0,128,0.1);
+    }
+    option{
+    color:black;}
+    textarea{
+        color:#fff;
+    }
+
+    .three{
+    font-size:1.5em;
+    width:100%;
+    }
