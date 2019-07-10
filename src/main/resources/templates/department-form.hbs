@@ -1,0 +1,26 @@
+{{#block "styles"}}
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+{{/block}}
+{{#partial "content"}}
+
+    <p  id="h1-1" >Add new department</p>
+
+    <form action="/new/department" method="POST" class="form-group form">
+        <div class="md-form">
+            <label id="h1-1" for="name">Department</label>
+            <input id="department" name="department" type="text" class="form-control" required>
+        </div>
+        <div class="md-form">
+            <label id="h1-1" for="cause">Description</label>
+            <input id="cause" name="cause" type="text" class="form-control" required><br>
+        </div>
+        <div class="md-form">
+            <label id="h1-1" for="maximum">Maximum No</label>
+            <input id="number_employees" name="number_employees" type="number" class="form-control" required>
+        </div>
+        <button type="submit"  class="btn mdb-color darken-3 animated  infinite btn-1">Add Department<i class="fas fa-angle-double-down "></i></button>
+    </form>
+
+{{/partial}}
+
+{{> layout.hbs}}

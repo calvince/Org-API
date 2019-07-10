@@ -21,10 +21,10 @@ public class Sql2oNewsDaoTest {
         conn = sql2o.open();
     }
 
-    @After
-    public void tearDown() throws Exception {
-        newsDao.clearAll();
-    }
+//    @After
+//    public void tearDown() throws Exception {
+//        newsDao.clearAll();
+//    }
     @AfterClass
     public static void shutDown() throws Exception{
         conn.close();

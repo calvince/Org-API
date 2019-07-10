@@ -1,0 +1,32 @@
+{{#block "styles"}}
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+{{/block}}
+{{#partial "content"}}
+
+    <h1>All Departments</h1>
+    <h2>To add a department:
+        <a href="/new/department"> click here</a>
+    </h2>
+    <br>
+    <br>
+    <table class="table">
+        <tr>
+            <th scope="col">Department Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Number of employees</th>
+
+
+        </tr>
+        {{#each departments}}
+            <tr>
+                <td>{{department}}</td>
+                <td>{{description}}</td>
+                <td>{{number_employees}}</td>
+
+            </tr>
+        {{/each}}
+    </table>
+
+{{/partial}}
+
+{{> layout.hbs}}

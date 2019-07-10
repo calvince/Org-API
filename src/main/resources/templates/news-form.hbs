@@ -1,0 +1,31 @@
+{{#block "styles"}}
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+{{/block}}
+{{#partial "content"}}
+
+    <p  id="h1-1" >Add News</p>
+
+    <form action="/new/news" method="POST" class="form-group form">
+        <div class="md-form">
+            <label id="h1-1" for="name">Title</label>
+            <input id="title" name="title" type="text" class="form-control" required>
+        </div>
+        <div class="md-form">
+            <label id="h1-1" for="content">Content</label>
+            <input id="content" name="content" type="text" class="form-control" required><br>
+        </div>
+        <label id="h1-1 three" for="content">department</label>
+        <div class="md-form">
+
+            <select  id="content" name="departmentId" type="text" class="form-control" required>
+                {{#each deps}}
+                    <option class="three" value={{id}}>{{department}}</option>
+                {{/each}}
+
+            </select><br>
+        </div>
+        <button type="submit"  class="btn mdb-color darken-3 animated  infinite btn-1">Add Employee<i class="fas fa-angle-double-down "></i></button>
+    </form>
+
+{{/partial}}
+{{> layout.hbs}}

@@ -1,0 +1,34 @@
+{{#block "styles"}}
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+{{/block}}
+{{#partial "content"}}
+
+    <h1>All Employees</h1>
+    <h2>To add a employee:
+        <a href="/new/employees"> click here</a>
+    </h2>
+    <br>
+    <br>
+    <table class="table">
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Position</th>
+            <th scope="col">Role</th>
+            <th scope="col">Address</th>
+
+
+
+        </tr>
+        {{#each employees}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{position}}</td>
+                <td>{{role}}</td>
+                <td>{{address}}</td>
+            </tr>
+        {{/each}}
+    </table>
+
+{{/partial}}
+
+{{>layout.hbs}}

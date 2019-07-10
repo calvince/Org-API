@@ -1,0 +1,30 @@
+{{#block "styles"}}
+    <link rel="stylesheet" href="/css/styles.css" type="text/css">
+{{/block}}
+{{#partial "content"}}
+
+    <p  id="h1-1" >Add an Employee</p>
+
+    <form action="/new/employees" method="POST" class="form-group form">
+        <div class="md-form">
+            <label id="h1-1" for="name">Name</label>
+            <input id="name" name="name" type="text" class="form-control" required>
+        </div>
+        <div class="md-form">
+            <label id="h1-1" for="position">Position</label>
+            <input id="position" name="position" type="text" class="form-control" required><br>
+        </div>
+        <div class="md-form">
+            <label id="h1-1" for="role">Role</label>
+            <input id="role" name="role" type="text" class="form-control" required>
+        </div>
+        <div class="md-form">
+            <label id="h1-1" for="address">Address</label>
+            <input id="address" name="address" type="text" class="form-control" required>
+        </div>
+        <button type="submit"  class="btn mdb-color darken-3 animated  infinite btn-1">Add Employee<i class="fas fa-angle-double-down "></i></button>
+    </form>
+
+{{/partial}}
+
+{{> layout.hbs}}
