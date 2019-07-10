@@ -12,8 +12,10 @@ public interface NewsDao {
     News findById(int id);
 
     //Update department news
-    void updateNews(int id, String title, String content);
+    void updateNews(int id, String title, String content,int departmentId);
 
     //Get all department news by department id
     List<News> getAllNews(int departmentId);
+
+    void clearAll();
 }
