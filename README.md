@@ -32,9 +32,9 @@ Organisational Api gives you the ability to query for all the users and the depa
  | Add news       | Input Data       | News is added to the news table    |
  | Add a department       | Input department data       | The department info is added to the table of departments  |
  | Add a Employee       | Input Employee data in json       | Employee added to Employees Table    |
- | Retrieve all departments a user belongs to | Make a get request on `users/1/departments` where '1' is the EmployeeId | All departments that a user belongs to are displayed |
+ | Retrieve all departments a user belongs to | Make a get request on `employees/1/department` where '1' is the EmployeeId | All departments that an employee belongs to are displayed |
 
-##Future release
+## Future release
 Make the APi available for Use
 
 ## Support and contact details
