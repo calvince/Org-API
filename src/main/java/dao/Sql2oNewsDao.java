@@ -8,17 +8,17 @@ import org.sql2o.Sql2oException;
 import java.util.List;
 
 public class Sql2oNewsDao implements NewsDao {
+
     private final Sql2o sql2o;
     public  Sql2oNewsDao(Sql2o sql2o){
         this.sql2o = sql2o;
     }
     @Override
     public void add(News news) {
-        String sql ="INSERT INTO news(title, content, importance, type, departmentId) VALUES (:title, :content, :importance, 'Department news', :departmentId)";
+        String sql ="INSERT INTO news(title, content,departmentId) VALUES (:title, :content,:departmentId)";
         try(Connection conn = sql2o.open()){
             int id = (int) conn.createQuery(sql, true)
                     .bind(news)
-                    .throwOnMappingFailure(false)
                     .executeUpdate()
                     .getKey();
            news.setId(id);
@@ -39,12 +39,13 @@ public class Sql2oNewsDao implements NewsDao {
     }
 
     @Override
-    public void updateNews(int id, String title, String content) {
-        String sql = "UPDATE news SET (title, content) = (:title, :content) WHERE id =:id";
+    public void updateNews(int id, String title, String content,int departmentId) {
+        String sql = "UPDATE news SET (title, content,departmentId) = (:title, :content,:departmentId) WHERE id=:id";
         try(Connection conn = sql2o.open()){
             conn.createQuery(sql)
                     .addParameter("title", title)
                     .addParameter("content", content)
+                    .addParameter("departmentId",departmentId)
                     .addParameter("id", id)
                     .executeUpdate();
         }catch (Sql2oException ex){
@@ -60,5 +61,17 @@ public class Sql2oNewsDao implements NewsDao {
                     .throwOnMappingFailure(false)
                     .executeAndFetch(News.class);
         }
+    }
+
+    @Override
+    public void clearAll() {
+        String sql = "DELETE FROM news";
+        try (Connection conn = sql2o.open()){
+            conn.createQuery(sql)
+                    .executeUpdate();
+        }catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+
     }
 }
