@@ -54,11 +54,10 @@ public class Sql2oNewsDao implements NewsDao {
     }
 
     @Override
-    public List<News> getAllNews(int departmentId) {
-        String sql = "SELECT * FROM news WHERE departmentId =:departmentId";
+    public List<News> getAllNews() {
+        String sql = "SELECT * FROM news";
         try(Connection conn = sql2o.open()){
-            return conn.createQuery(sql).addParameter("departmentId", departmentId)
-                    .throwOnMappingFailure(false)
+            return conn.createQuery(sql)
                     .executeAndFetch(News.class);
         }
     }
